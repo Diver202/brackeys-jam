@@ -1,0 +1,99 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: M_Water
+  m_Shader: {fileID: -6465566751694194690, guid: c693885c2583bd84293be597d7cd37d4, type: 3}
+  m_Parent: {fileID: 2100000, guid: 4e66bef59d8c7a14c865d2fa018b3259, type: 2}
+  m_ModifiedSerializedProperties: 16
+  m_ValidKeywords: []
+  m_InvalidKeywords:
+  - _DISABLE_SSR_TRANSPARENT
+  - _ENABLE_FOG_ON_TRANSPARENT
+  - _REFRACTION_THIN
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap:
+    MotionVector: User
+    RenderType: Opaque
+  disabledShaderPasses:
+  - MOTIONVECTORS
+  - TransparentDepthPrepass
+  - TransparentDepthPostpass
+  - TransparentBackface
+  - RayTracingPrepass
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_296162aee2a745d3b57152085d1d03fd:
+        m_Texture: {fileID: 2800000, guid: 4264acf8764e3594c9e38b31c3d490b7, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_30a6e8478fc24bc5950a35a44a032eff:
+        m_Texture: {fileID: 2800000, guid: 50d51e9bd5e38394c95c7a447aa69d27, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_50c95c074b594c14bf2a852e0ea6e5b8:
+        m_Texture: {fileID: 2800000, guid: 2aa780680d52cb9468f0601ce948486d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_eb55fdf554d54ac0bf51809f94be4d07:
+        m_Texture: {fileID: 2800000, guid: 7575033d320ed6942a642e900859e46b, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - Boolean_22a13923a649479f9af675a864f7c27e: 0
+    - Vector1_797a12a72031456d833eda7dd3aaa82a: 0.25
+    - Vector1_8642ad8e0a67418c8d279607601374ce: 32
+    - Vector1_8b8dc0f10afc456f90e0b05c8099014c: 34.3
+    - Vector1_9137fe8c5e5f41a395c65eb1b1c86261: 1
+    - Vector1_93d01746e6b040be800ac76d1721b506: 1
+    - Vector1_c15a4bcb5657447baad0a61a6e50f537: 8
+    - _AlphaDstBlend: 10
+    - _EnableBlendModePreserveSpecularLighting: 0
+    - _RefractionModel: 3
+    - _RenderQueueType: 4
+    - _StencilRefDepth: 0
+    - _StencilRefGBuffer: 2
+    - _StencilRefMV: 32
+    - _SurfaceType: 1
+    - _TransparentZWrite: 1
+    - _ZTestDepthEqualForOpaque: 4
+    m_Colors: []
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1
+--- !u!114 &5910450374456638202
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da692e001514ec24dbc4cca1949ff7e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 11
+--- !u!114 &9182982848296762557
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 10
