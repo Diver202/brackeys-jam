@@ -28,9 +28,12 @@ public class sequenceManagerSceneTwo : MonoBehaviour {
     public AudioClip blipSound;
     public AudioClip otherVoiceSound;
     public AudioClip washroomSound;
+    public AudioClip crashSound; 
     public float typingSpeed = 0.05f;
-    public float minPitch = 0.85f;
-    public float maxPitch = 1.15f;
+    public float playerMinPitch = 0.85f;
+    public float playerMaxPitch = 1.15f;
+    public float otherMinPitch = 0.60f; // Lower pitch for the entity
+    public float otherMaxPitch = 0.80f;
 
     [Header("TV Settings")]
     public VideoPlayer tvVideoPlayer;
@@ -52,12 +55,20 @@ public class sequenceManagerSceneTwo : MonoBehaviour {
         subtitleText.fontStyle = isItalic ? FontStyles.Italic : FontStyles.Normal;
 
         AudioClip voiceToPlay = customVoice != null ? customVoice : blipSound;
+        bool isOtherVoice = customVoice != null;
 
         foreach (char letter in text.ToCharArray()) {
             subtitleText.text += letter;
 
             if (!isSilent && !char.IsWhiteSpace(letter) && speechAudioSource != null && voiceToPlay != null) {
-                speechAudioSource.pitch = Random.Range(minPitch, maxPitch);
+                
+                // Route the pitch based on the active voice
+                if (isOtherVoice) {
+                    speechAudioSource.pitch = Random.Range(otherMinPitch, otherMaxPitch);
+                } else {
+                    speechAudioSource.pitch = Random.Range(playerMinPitch, playerMaxPitch);
+                }
+                
                 speechAudioSource.PlayOneShot(voiceToPlay);
             }
 
@@ -71,16 +82,16 @@ public class sequenceManagerSceneTwo : MonoBehaviour {
     }
 
     private IEnumerator fade(float startAlpha, float endAlpha, float duration) {
-        Color c = screenFader.color;
+        Color fadeColor = screenFader.color;
         float elapsed = 0f;
         while (elapsed < duration) {
             elapsed += Time.deltaTime;
-            c.a = Mathf.Lerp(startAlpha, endAlpha, elapsed / duration);
-            screenFader.color = c;
+            fadeColor.a = Mathf.Lerp(startAlpha, endAlpha, elapsed / duration);
+            screenFader.color = fadeColor;
             yield return null;
         }
-        c.a = endAlpha;
-        screenFader.color = c;
+        fadeColor.a = endAlpha;
+        screenFader.color = fadeColor;
     }
 
     private IEnumerator playWakeUp() {
@@ -101,10 +112,8 @@ public class sequenceManagerSceneTwo : MonoBehaviour {
     }
 
     public void processInteraction(string id) {
-        // 1. Hard lock: Ignore all right-clicks while any sequence is actively playing
         if (currentStage == 0) return; 
 
-        // 2. Front Door Routing
         if (id == "frontDoor") {
             if (currentStage < 4) {
                 StartCoroutine(playEarlyFrontDoor());
@@ -115,7 +124,6 @@ public class sequenceManagerSceneTwo : MonoBehaviour {
             }
         }
         
-        // 3. Standard Routing
         if (id == "washroom" && currentStage == 1) StartCoroutine(playWashroom());
         else if (id == "kitchen" && currentStage == 2) StartCoroutine(playKitchen());
         else if (id == "sofa" && currentStage == 3) StartCoroutine(playSofa());
@@ -124,9 +132,9 @@ public class sequenceManagerSceneTwo : MonoBehaviour {
 
     private IEnumerator playEarlyFrontDoor() {
         int previousStage = currentStage;
-        currentStage = 0; // Lock out other interactions temporarily
+        currentStage = 0; 
         yield return StartCoroutine(showSub("I don't want to go outside.", 3f, false, false, otherVoiceSound));
-        currentStage = previousStage; // Restore the sequence
+        currentStage = previousStage; 
     }
 
     private IEnumerator playWashroom() {
@@ -179,10 +187,8 @@ public class sequenceManagerSceneTwo : MonoBehaviour {
             tvVideoPlayer.Play();
         } 
         
-        // Wait 1 min 25 seconds (85 seconds)
         yield return new WaitForSeconds(85f);
 
-        // Stand up sequence - Reactivate physics and controls immediately
         if (playerCollider != null) playerCollider.enabled = true;
         if (playerInputActions != null) {
             playerInputActions.actions.FindAction("Move").Enable();
@@ -204,15 +210,15 @@ public class sequenceManagerSceneTwo : MonoBehaviour {
             yield return StartCoroutine(showSub("I don't want to go outside.", 3f, false, false, otherVoiceSound));
         } 
         else if (doorClickCount == 1) {
-            yield return StartCoroutine(showSub("I still do not want to go outside.", 3f, false, false, otherVoiceSound));
+            yield return StartCoroutine(showSub("I still do not want to go outside. I want to go to sleep.", 3f, false, false, otherVoiceSound));
         } 
         else if (doorClickCount == 2) {
             yield return StartCoroutine(showSub("Wait. That's not me. Who are you?", 3f));
-            yield return StartCoroutine(showSub("I don't want to go outside.", 3f, false, false, otherVoiceSound));
+            yield return StartCoroutine(showSub("I don't want to go outside. I want to go to sleep.", 3f, false, false, otherVoiceSound));
         } 
         else if (doorClickCount == 3) {
             yield return StartCoroutine(showSub("Who is this?", 3f));
-            yield return StartCoroutine(showSub("I don't want to go outside.", 3f, false, false, otherVoiceSound));
+            yield return StartCoroutine(showSub("I don't want to go outside. I want to go to sleep.", 3f, false, false, otherVoiceSound));
         } 
         else if (doorClickCount == 4) {
             yield return StartCoroutine(showSub("But I do...", 3f));
@@ -223,8 +229,23 @@ public class sequenceManagerSceneTwo : MonoBehaviour {
             
             if (frontDoorRig != null) frontDoorRig.toggleDoor();
             
-            yield return new WaitForSeconds(3.5f);
-            yield return StartCoroutine(fade(0f, 1f, 1f));
+            while (playerCollider != null && playerCollider.transform.position.y >= -22f) {
+                yield return null; 
+            }
+
+            if (screenFader != null) {
+                Color hardBlack = screenFader.color;
+                hardBlack.a = 1f;
+                screenFader.color = hardBlack;
+            }
+
+            if (actionAudioSource != null && crashSound != null) {
+                actionAudioSource.PlayOneShot(crashSound);
+                yield return new WaitForSeconds(crashSound.length + 0.5f); 
+            } else {
+                yield return new WaitForSeconds(2f);
+            }
+
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             yield break; 
         }

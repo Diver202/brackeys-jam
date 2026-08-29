@@ -29,8 +29,10 @@ public class sequenceManager : MonoBehaviour {
     public AudioClip washroomSound;
     public AudioClip kitchenSound;
     public float typingSpeed = 0.05f;
-    public float minPitch = 0.85f;
-    public float maxPitch = 1.15f;
+    public float playerMinPitch = 0.85f;
+    public float playerMaxPitch = 1.15f;
+    public float otherMinPitch = 0.60f;
+    public float otherMaxPitch = 0.80f;
 
     [Header("TV Settings")]
     public VideoPlayer tvVideoPlayer;
@@ -49,12 +51,20 @@ public class sequenceManager : MonoBehaviour {
         subtitleText.fontStyle = isItalic ? FontStyles.Italic : FontStyles.Normal;
 
         AudioClip voiceToPlay = customVoice != null ? customVoice : blipSound;
+        bool isOtherVoice = customVoice != null;
 
         foreach (char letter in text.ToCharArray()) {
             subtitleText.text += letter;
 
             if (!isSilent && !char.IsWhiteSpace(letter) && speechAudioSource != null && voiceToPlay != null) {
-                speechAudioSource.pitch = Random.Range(minPitch, maxPitch);
+                
+                // Route the pitch based on the active voice
+                if (isOtherVoice) {
+                    speechAudioSource.pitch = Random.Range(otherMinPitch, otherMaxPitch);
+                } else {
+                    speechAudioSource.pitch = Random.Range(playerMinPitch, playerMaxPitch);
+                }
+                
                 speechAudioSource.PlayOneShot(voiceToPlay);
             }
 
