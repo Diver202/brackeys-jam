@@ -16,24 +16,24 @@ public class playerInteraction : MonoBehaviour {
         
         Debug.DrawRay(interactionRay.origin, interactionRay.direction * interactDistance, Color.red, 3f);
 
-        if (Physics.Raycast(interactionRay, out RaycastHit hitData, interactDistance)) {
-            Debug.Log("Ray hit: " + hitData.collider.gameObject.name);
-            
-            DoorController targetDoor = hitData.collider.GetComponentInParent<DoorController>();
-            if (targetDoor != null) {
-                targetDoor.toggleDoor();
-                return;
-            }
+        // Inside your fireRaycast() method:
 
-            interactableNode targetNode = hitData.collider.GetComponentInParent<interactableNode>();
+    if (Physics.Raycast(interactionRay, out RaycastHit hitData, interactDistance)) {
+                
+        // 1. Check for Narrative Nodes FIRST
+        interactableNode targetNode = hitData.collider.GetComponent<interactableNode>();
+        if (targetNode != null) {
+            targetNode.triggerNode();
+            return; // Stops here, physical door ignores the click
+        }
 
-            if (targetNode != null) {
-                Debug.Log("Triggering node: " + targetNode.nodeId);
-                targetNode.triggerNode();
-            } else {
-                Debug.LogWarning("Hit object has no interactableNode script.");
-            }
-        } else {
+        // 2. Check for Normal Doors SECOND
+        DoorController targetDoor = hitData.collider.GetComponentInParent<DoorController>();
+        if (targetDoor != null) {
+            targetDoor.toggleDoor();
+            return;
+        }
+    } else {
             Debug.Log("Ray missed entirely.");
         }
     }

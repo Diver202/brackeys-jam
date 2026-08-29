@@ -614,9 +614,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 290344206}
-  - component: {fileID: 290344205}
   - component: {fileID: 290344208}
   - component: {fileID: 290344207}
+  - component: {fileID: 290344209}
   m_Layer: 0
   m_Name: SequenceManager
   m_TagString: Untagged
@@ -624,37 +624,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &290344205
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 290344204}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3095d49c8e5bbba40891f83c55023ed9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  subtitleText: {fileID: 1360938024}
-  screenFader: {fileID: 170461403}
-  playerCollider: {fileID: 1444775825}
-  playerInputActions: {fileID: 1444775822}
-  sofaSeatPoint: {fileID: 187889454}
-  washroomPrompt: {fileID: 1324043398}
-  kitchenPrompt: {fileID: 7912760}
-  sofaPrompt: {fileID: 1717719687}
-  sandwichProp: {fileID: 334189133}
-  actionAudioSource: {fileID: 290344208}
-  speechAudioSource: {fileID: 290344207}
-  blipSound: {fileID: 8300000, guid: 26761297ad070cc41a73c58ea9f42a06, type: 3}
-  alternateVoiceSound: {fileID: 8300000, guid: 0f9c3c83cf70a57499d53cd51b540378, type: 3}
-  washroomSound: {fileID: 8300000, guid: 6496004a547c14047a70d2c575f6616a, type: 3}
-  kitchenSound: {fileID: 8300000, guid: 58acefc8b6493954c94b8123d76c81ea, type: 3}
-  typingSpeed: 0.05
-  minPitch: 0.7
-  maxPitch: 0.9
-  tvVideoPlayer: {fileID: 448160219}
 --- !u!4 &290344206
 Transform:
   m_ObjectHideFlags: 0
@@ -864,11 +833,37 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!1 &334189133 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8235154880564712525, guid: 4fc9f90ce4c27f2419d87b083a4b0585, type: 3}
-  m_PrefabInstance: {fileID: 705210738}
+--- !u!114 &290344209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 290344204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3095d49c8e5bbba40891f83c55023ed9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::sequenceManager
+  subtitleText: {fileID: 1360938024}
+  screenFader: {fileID: 170461403}
+  playerCollider: {fileID: 1444775825}
+  playerInputActions: {fileID: 1444775822}
+  sofaSeatPoint: {fileID: 187889454}
+  washroomPrompt: {fileID: 1324043398}
+  kitchenPrompt: {fileID: 7912760}
+  sofaPrompt: {fileID: 1717719687}
+  sandwichProp: {fileID: 705210740}
+  actionAudioSource: {fileID: 290344208}
+  speechAudioSource: {fileID: 290344207}
+  blipSound: {fileID: 8300000, guid: 26761297ad070cc41a73c58ea9f42a06, type: 3}
+  alternateVoiceSound: {fileID: 8300000, guid: 0f9c3c83cf70a57499d53cd51b540378, type: 3}
+  washroomSound: {fileID: 8300000, guid: 6496004a547c14047a70d2c575f6616a, type: 3}
+  kitchenSound: {fileID: 8300000, guid: 58acefc8b6493954c94b8123d76c81ea, type: 3}
+  typingSpeed: 0.05
+  minPitch: 0.7
+  maxPitch: 0.9
+  tvVideoPlayer: {fileID: 448160219}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -1037,25 +1032,36 @@ VideoPlayer:
   m_WaitForFirstFrame: 1
   m_FrameReadyEventEnabled: 0
   m_VideoShaders: []
---- !u!1 &596330381 stripped
+--- !u!4 &524813882 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7299683708935308095, guid: 0afd69b5b86b13b4db61d58f91c02066, type: 3}
+  m_PrefabInstance: {fileID: 1129638291}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &613191892 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 3542675114996005709, guid: b3c01bafbe9c8fa4fbd4cd93e0eaad44, type: 3}
+  m_CorrespondingSourceObject: {fileID: 1931403444797532563, guid: 0afd69b5b86b13b4db61d58f91c02066, type: 3}
+  m_PrefabInstance: {fileID: 1129638291}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &646060697 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 573374348722902926, guid: b3c01bafbe9c8fa4fbd4cd93e0eaad44, type: 3}
   m_PrefabInstance: {fileID: 1930013348022791247}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &596330383
+--- !u!114 &646060702
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 596330381}
+  m_GameObject: {fileID: 646060697}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3b05f0ca6584daf438216d0b23e3b316, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::interactableNode
   nodeId: sofa
-  managerReference: {fileID: 290344205}
+  managerReference: {fileID: 290344209}
+  managerReferenceTwo: {fileID: 0}
 --- !u!1001 &705210738
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1118,6 +1124,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8719801311783161591, guid: 4fc9f90ce4c27f2419d87b083a4b0585, type: 3}
   m_PrefabInstance: {fileID: 705210738}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &705210740 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8235154880564712525, guid: 4fc9f90ce4c27f2419d87b083a4b0585, type: 3}
+  m_PrefabInstance: {fileID: 705210738}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -1167,6 +1178,46 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &903378539 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5510379458983686757, guid: b3c01bafbe9c8fa4fbd4cd93e0eaad44, type: 3}
+  m_PrefabInstance: {fileID: 1930013348022791247}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &903378544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 903378539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b05f0ca6584daf438216d0b23e3b316, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::interactableNode
+  nodeId: washroom
+  managerReference: {fileID: 290344209}
+  managerReferenceTwo: {fileID: 0}
+--- !u!1 &1064555017 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6987008908335812237, guid: b3c01bafbe9c8fa4fbd4cd93e0eaad44, type: 3}
+  m_PrefabInstance: {fileID: 1930013348022791247}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1064555022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1064555017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b05f0ca6584daf438216d0b23e3b316, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::interactableNode
+  nodeId: kitchen
+  managerReference: {fileID: 290344209}
+  managerReferenceTwo: {fileID: 0}
 --- !u!1 &1083523731
 GameObject:
   m_ObjectHideFlags: 0
@@ -1466,6 +1517,9 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1931403444797532563, guid: 0afd69b5b86b13b4db61d58f91c02066, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1129638293}
     - targetCorrespondingSourceObject: {fileID: 9204406534765539743, guid: 0afd69b5b86b13b4db61d58f91c02066, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1240841759}
@@ -1475,6 +1529,21 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1262812880092214057, guid: 0afd69b5b86b13b4db61d58f91c02066, type: 3}
   m_PrefabInstance: {fileID: 1129638291}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1129638293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 613191892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb2f141963e29ea44b5d19d425317a63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DoorController
+  hingePivot: {fileID: 524813882}
+  openAngle: 90
+  swingSpeed: 5
 --- !u!1001 &1194108450
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1570,7 +1639,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::interactableNode
   nodeId: frontDoor
-  managerReference: {fileID: 290344205}
+  managerReference: {fileID: 290344209}
+  managerReferenceTwo: {fileID: 0}
 --- !u!1 &1324043398
 GameObject:
   m_ObjectHideFlags: 0
@@ -1618,8 +1688,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2385,49 +2455,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2040507718 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5349282970270586260, guid: b3c01bafbe9c8fa4fbd4cd93e0eaad44, type: 3}
-  m_PrefabInstance: {fileID: 1930013348022791247}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2040507719 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4717424031235968814, guid: b3c01bafbe9c8fa4fbd4cd93e0eaad44, type: 3}
   m_PrefabInstance: {fileID: 1930013348022791247}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2040507720
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2040507718}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b05f0ca6584daf438216d0b23e3b316, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::interactableNode
-  nodeId: kitchen
-  managerReference: {fileID: 290344205}
---- !u!1 &2137855649 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6760272648617733202, guid: b3c01bafbe9c8fa4fbd4cd93e0eaad44, type: 3}
-  m_PrefabInstance: {fileID: 1930013348022791247}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2137855651
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2137855649}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b05f0ca6584daf438216d0b23e3b316, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::interactableNode
-  nodeId: washroom
-  managerReference: {fileID: 290344205}
 --- !u!1001 &1930013348022791247
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2519,18 +2551,18 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1194108451}
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6760272648617733202, guid: b3c01bafbe9c8fa4fbd4cd93e0eaad44, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 5510379458983686757, guid: b3c01bafbe9c8fa4fbd4cd93e0eaad44, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2137855651}
-    - targetCorrespondingSourceObject: {fileID: 5349282970270586260, guid: b3c01bafbe9c8fa4fbd4cd93e0eaad44, type: 3}
+      addedObject: {fileID: 903378544}
+    - targetCorrespondingSourceObject: {fileID: 6987008908335812237, guid: b3c01bafbe9c8fa4fbd4cd93e0eaad44, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2040507720}
+      addedObject: {fileID: 1064555022}
     - targetCorrespondingSourceObject: {fileID: 17440465517488997, guid: b3c01bafbe9c8fa4fbd4cd93e0eaad44, type: 3}
       insertIndex: -1
       addedObject: {fileID: 448160219}
-    - targetCorrespondingSourceObject: {fileID: 3542675114996005709, guid: b3c01bafbe9c8fa4fbd4cd93e0eaad44, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 573374348722902926, guid: b3c01bafbe9c8fa4fbd4cd93e0eaad44, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 596330383}
+      addedObject: {fileID: 646060702}
   m_SourcePrefab: {fileID: 100100000, guid: b3c01bafbe9c8fa4fbd4cd93e0eaad44, type: 3}
 --- !u!4 &1930013348022791248 stripped
 Transform:
