@@ -1039,12 +1039,14 @@ MonoBehaviour:
   actionAudioSource: {fileID: 290344208}
   speechAudioSource: {fileID: 290344207}
   blipSound: {fileID: 8300000, guid: 26761297ad070cc41a73c58ea9f42a06, type: 3}
-  otherVoiceSound: {fileID: 8300000, guid: 0f9c3c83cf70a57499d53cd51b540378, type: 3}
+  otherVoiceSound: {fileID: 8300000, guid: 54742ea5c68daa248b4a83ccc2beba19, type: 3}
   washroomSound: {fileID: 8300000, guid: 6496004a547c14047a70d2c575f6616a, type: 3}
   crashSound: {fileID: 8300000, guid: d66f5fbc5ba3bba4db204603d86165a4, type: 3}
   typingSpeed: 0.05
-  minPitch: 0.7
-  maxPitch: 0.9
+  playerMinPitch: 0.7
+  playerMaxPitch: 0.9
+  otherMinPitch: 0.6
+  otherMaxPitch: 0.8
   tvVideoPlayer: {fileID: 448160219}
 --- !u!1 &410087039
 GameObject:
@@ -1193,6 +1195,7 @@ MonoBehaviour:
   nodeId: bed
   managerReference: {fileID: 0}
   managerReferenceTwo: {fileID: 290344209}
+  managerReferenceThree: {fileID: 0}
 --- !u!1 &448160214 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 17440465517488997, guid: b3c01bafbe9c8fa4fbd4cd93e0eaad44, type: 3}
@@ -2193,6 +2196,7 @@ MonoBehaviour:
   nodeId: bed
   managerReference: {fileID: 0}
   managerReferenceTwo: {fileID: 290344209}
+  managerReferenceThree: {fileID: 0}
 --- !u!1 &1083523731
 GameObject:
   m_ObjectHideFlags: 0
@@ -2334,6 +2338,7 @@ MonoBehaviour:
   nodeId: sofa
   managerReference: {fileID: 0}
   managerReferenceTwo: {fileID: 290344209}
+  managerReferenceThree: {fileID: 0}
 --- !u!1001 &1123652761
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2659,6 +2664,7 @@ MonoBehaviour:
   nodeId: frontDoor
   managerReference: {fileID: 0}
   managerReferenceTwo: {fileID: 290344209}
+  managerReferenceThree: {fileID: 0}
 --- !u!1 &1324043398
 GameObject:
   m_ObjectHideFlags: 0
@@ -4966,6 +4972,7 @@ MonoBehaviour:
   nodeId: bed
   managerReference: {fileID: 0}
   managerReferenceTwo: {fileID: 290344209}
+  managerReferenceThree: {fileID: 0}
 --- !u!1 &1889327255
 GameObject:
   m_ObjectHideFlags: 0
@@ -5938,6 +5945,7 @@ MonoBehaviour:
   nodeId: washroom
   managerReference: {fileID: 0}
   managerReferenceTwo: {fileID: 290344209}
+  managerReferenceThree: {fileID: 0}
 --- !u!1 &1930013348022791251 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6987008908335812237, guid: b3c01bafbe9c8fa4fbd4cd93e0eaad44, type: 3}
@@ -5958,6 +5966,7 @@ MonoBehaviour:
   nodeId: kitchen
   managerReference: {fileID: 0}
   managerReferenceTwo: {fileID: 290344209}
+  managerReferenceThree: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

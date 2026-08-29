@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using TMPro;
 using System.Collections;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class sequenceManagerSceneThree : MonoBehaviour {
     [Header("UI Elements")]
@@ -11,11 +12,15 @@ public class sequenceManagerSceneThree : MonoBehaviour {
     
     [Header("Player Components")]
     public PlayerInput playerInputActions;
+    public CharacterController playerCollider;
+    public Transform laserCheckpoint;
 
     [Header("Environment Swap")]
     public GameObject normalPath;
     public GameObject parkourPath;
     public GameObject laserWall;
+    public Transform laserStartTransform;
+    public Transform redButtonTop;
 
     [Header("Audio & Speech")]
     public AudioSource speechAudioSource;
@@ -24,13 +29,40 @@ public class sequenceManagerSceneThree : MonoBehaviour {
     public float typingSpeed = 0.05f;
     public float playerMinPitch = 0.85f;
     public float playerMaxPitch = 1.15f;
-    public float otherMinPitch = 0.60f; // Lower pitch for the entity
+    public float otherMinPitch = 0.60f; 
     public float otherMaxPitch = 0.80f;
+
+    private bool laserTriggered = false;
 
     void Start() {
         if (parkourPath != null) parkourPath.SetActive(false);
         if (laserWall != null) laserWall.SetActive(false);
         StartCoroutine(playLanding());
+    }
+
+    void Update() {
+        if (playerCollider == null) return;
+
+        float currentY = playerCollider.transform.position.y;
+
+        if (!laserTriggered && currentY < -50f) {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        } else if (laserTriggered && currentY < -280f) {
+            resetToCheckpoint();
+        }
+    }
+
+    public void resetToCheckpoint() {
+        if (laserCheckpoint != null) {
+            playerCollider.enabled = false;
+            playerCollider.transform.position = laserCheckpoint.position;
+            playerCollider.transform.rotation = laserCheckpoint.rotation;
+            playerCollider.enabled = true;
+        }
+
+        if (laserWall != null && laserStartTransform != null) {
+            laserWall.transform.position = laserStartTransform.position;
+        }
     }
 
     private IEnumerator showSub(string text, float duration = 3.5f, bool isSilent = false, bool isItalic = false, AudioClip customVoice = null) {
@@ -45,7 +77,6 @@ public class sequenceManagerSceneThree : MonoBehaviour {
 
             if (!isSilent && !char.IsWhiteSpace(letter) && speechAudioSource != null && voiceToPlay != null) {
                 
-                // Route the pitch based on the active voice
                 if (isOtherVoice) {
                     speechAudioSource.pitch = Random.Range(otherMinPitch, otherMaxPitch);
                 } else {
@@ -84,6 +115,8 @@ public class sequenceManagerSceneThree : MonoBehaviour {
         yield return StartCoroutine(fade(1f, 0f, 3f));
         
         if (playerInputActions != null) playerInputActions.ActivateInput();
+
+        yield return StartCoroutine(showSub("Press LShift to sprint", 3.5f, true, true));
     }
 
     public void triggerDialogue(int dialogueIndex) {
@@ -93,13 +126,31 @@ public class sequenceManagerSceneThree : MonoBehaviour {
     }
 
     public void processInteraction(string id) {
-        if (id == "laserButton") {
+        if (id == "laserButton" && !laserTriggered) {
             StartCoroutine(playLaserTrap());
         }
     }
 
     private IEnumerator playLaserTrap() {
-        yield return StartCoroutine(showSub("Really? You really thought it would be that simple?", 4f, otherVoiceSound));
+        laserTriggered = true;
+
+        if (redButtonTop != null) {
+            Vector3 startPos = redButtonTop.localPosition;
+            Vector3 endPos = startPos - new Vector3(0, 0.1f, 0); 
+            float animTime = 0f;
+            float animDuration = 0.2f;
+
+            while (animTime < animDuration) {
+                animTime += Time.deltaTime;
+                redButtonTop.localPosition = Vector3.Lerp(startPos, endPos, animTime / animDuration);
+                yield return null;
+            }
+            redButtonTop.localPosition = endPos;
+        }
+
+        yield return StartCoroutine(showSub("Really? You really thought it would be that simple?", 4f, false, false, otherVoiceSound));
+        yield return StartCoroutine(showSub("Who - who are you?", 3f));
+        yield return StartCoroutine(showSub("Defecting subject has been located. Neutralise threat.", 4f, false, false, otherVoiceSound));
         
         if (normalPath != null) normalPath.SetActive(false);
         if (parkourPath != null) parkourPath.SetActive(true);
