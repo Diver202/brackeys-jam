@@ -33,7 +33,7 @@ public class sequenceManagerSceneFive : MonoBehaviour {
     }
 
     void Update() {
-        if (!isEnding && playerCollider != null && playerCollider.transform.position.y < -20f) {
+        if (!isEnding && playerCollider != null && playerCollider.transform.position.y < -10f) {
             resetToCheckpoint();
         }
     }
