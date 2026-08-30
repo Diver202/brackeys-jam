@@ -14,8 +14,14 @@ public class sequenceManagerSceneSeven : MonoBehaviour {
     public PlayerInput playerInputActions;
     public CharacterController playerCollider;
 
+    [Header("Checkpoints")]
+    public Transform initialCheckpoint;
+    public Transform confrontationCheckpoint;
+    private Transform currentCheckpoint;
+
     [Header("Trap Elements")]
     public GameObject laserWall;
+    public Transform laserStartTransform;
 
     [Header("Scene Transitions")]
     public string trueEndingSceneName = "TrueEndingScene";
@@ -34,8 +40,28 @@ public class sequenceManagerSceneSeven : MonoBehaviour {
     private bool endingTriggered = false;
 
     void Start() {
+        currentCheckpoint = initialCheckpoint;
         if (laserWall != null) laserWall.SetActive(false);
         StartCoroutine(playLanding());
+    }
+
+    void Update() {
+        if (!endingTriggered && playerCollider != null && playerCollider.transform.position.y < -10f) {
+            resetToCheckpoint();
+        }
+    }
+
+    public void resetToCheckpoint() {
+        if (currentCheckpoint != null) {
+            playerCollider.enabled = false;
+            playerCollider.transform.position = currentCheckpoint.position;
+            playerCollider.transform.rotation = currentCheckpoint.rotation;
+            playerCollider.enabled = true;
+        }
+
+        if (trapTriggered && laserWall != null && laserStartTransform != null) {
+            laserWall.transform.position = laserStartTransform.position;
+        }
     }
 
     public void triggerFinalConfrontation() {
@@ -52,6 +78,7 @@ public class sequenceManagerSceneSeven : MonoBehaviour {
 
     private IEnumerator playFinalConfrontation() {
         trapTriggered = true;
+        currentCheckpoint = confrontationCheckpoint; 
         
         if (playerInputActions != null) playerInputActions.actions.FindAction("Move").Disable();
 
