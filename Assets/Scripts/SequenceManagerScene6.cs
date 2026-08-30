@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using TMPro;
 using System.Collections;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class sequenceManagerSceneSix : MonoBehaviour {
     [Header("UI Elements")]
@@ -11,6 +12,11 @@ public class sequenceManagerSceneSix : MonoBehaviour {
     
     [Header("Player Components")]
     public PlayerInput playerInputActions;
+    public CharacterController playerCollider;
+    public Transform currentCheckpoint;
+
+    [Header("Scene Transitions")]
+    public string nextSceneName = "Scene7";
 
     [Header("Audio & Speech")]
     public AudioSource speechAudioSource;
@@ -19,8 +25,40 @@ public class sequenceManagerSceneSix : MonoBehaviour {
     public float playerMinPitch = 0.85f;
     public float playerMaxPitch = 1.15f;
 
+    private bool isEnding = false;
+
     void Start() {
         StartCoroutine(playLanding());
+    }
+
+    void Update() {
+        if (playerCollider == null) return;
+
+        float currentY = playerCollider.transform.position.y;
+
+        if (currentY < -10f) {
+            resetToCheckpoint();
+        } else if (currentY > 25f && !isEnding) {
+            StartCoroutine(playEndSequence());
+        }
+    }
+
+    private void resetToCheckpoint() {
+        if (currentCheckpoint != null) {
+            playerCollider.enabled = false;
+            playerCollider.transform.position = currentCheckpoint.position;
+            playerCollider.transform.rotation = currentCheckpoint.rotation;
+            playerCollider.enabled = true;
+        }
+    }
+
+    private IEnumerator playEndSequence() {
+        isEnding = true;
+        
+        if (playerInputActions != null) playerInputActions.DeactivateInput();
+        if (screenFader != null) yield return StartCoroutine(fade(0f, 1f, 2f));
+        
+        SceneManager.LoadScene(nextSceneName);
     }
 
     private IEnumerator playLanding() {
@@ -31,7 +69,6 @@ public class sequenceManagerSceneSix : MonoBehaviour {
             yield return StartCoroutine(fade(1f, 0f, 2f));
         }
         
-        // Reactivate movement immediately after the fade so they can walk while talking
         if (playerInputActions != null) playerInputActions.ActivateInput();
 
         yield return StartCoroutine(showSub("I don't understand how things just keep fading to black and I get teleported.", 4f));
