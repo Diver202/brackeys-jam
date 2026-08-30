@@ -600,9 +600,33 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5580742631320525567, guid: 4a25ce3bc01549942af9af23fb057107, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 806809636}
+    - target: {fileID: 5580742631320525567, guid: 4a25ce3bc01549942af9af23fb057107, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: resumeGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 5580742631320525567, guid: 4a25ce3bc01549942af9af23fb057107, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: pauseManager, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 5591727352818553927, guid: 4a25ce3bc01549942af9af23fb057107, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 7490797500693109363, guid: 4a25ce3bc01549942af9af23fb057107, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 806809636}
+    - target: {fileID: 7490797500693109363, guid: 4a25ce3bc01549942af9af23fb057107, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: loadMainMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 7490797500693109363, guid: 4a25ce3bc01549942af9af23fb057107, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: pauseManager, Assembly-CSharp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -631,6 +655,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+--- !u!1 &194368966 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 65927654968184859, guid: 4a25ce3bc01549942af9af23fb057107, type: 3}
+  m_PrefabInstance: {fileID: 194368963}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &226686165
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -737,6 +766,7 @@ GameObject:
   - component: {fileID: 290344208}
   - component: {fileID: 290344207}
   - component: {fileID: 290344209}
+  - component: {fileID: 290344210}
   m_Layer: 0
   m_Name: SequenceManagerScene2
   m_TagString: Untagged
@@ -987,6 +1017,18 @@ MonoBehaviour:
   otherMinPitch: 0.6
   otherMaxPitch: 0.8
   tvVideoPlayer: {fileID: 448160219}
+--- !u!114 &290344210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 290344204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32f4f880fc616d449a323f4873d8c921, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::progressTracker
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -2066,6 +2108,82 @@ Mesh:
       - serializedVersion: 1
         m_IndexStart: 0
         m_IndexCount: 0
+--- !u!1001 &806809635
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2575466679836583285, guid: b137d79ce4175c5459a8006d4c4b96ae, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 897.8248
+      objectReference: {fileID: 0}
+    - target: {fileID: 2575466679836583285, guid: b137d79ce4175c5459a8006d4c4b96ae, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 553.69293
+      objectReference: {fileID: 0}
+    - target: {fileID: 2575466679836583285, guid: b137d79ce4175c5459a8006d4c4b96ae, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2575466679836583285, guid: b137d79ce4175c5459a8006d4c4b96ae, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2575466679836583285, guid: b137d79ce4175c5459a8006d4c4b96ae, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2575466679836583285, guid: b137d79ce4175c5459a8006d4c4b96ae, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2575466679836583285, guid: b137d79ce4175c5459a8006d4c4b96ae, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2575466679836583285, guid: b137d79ce4175c5459a8006d4c4b96ae, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2575466679836583285, guid: b137d79ce4175c5459a8006d4c4b96ae, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2575466679836583285, guid: b137d79ce4175c5459a8006d4c4b96ae, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5156525172925466237, guid: b137d79ce4175c5459a8006d4c4b96ae, type: 3}
+      propertyPath: m_Name
+      value: PauseManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 8967863978549909467, guid: b137d79ce4175c5459a8006d4c4b96ae, type: 3}
+      propertyPath: pausePanel
+      value: 
+      objectReference: {fileID: 194368966}
+    - target: {fileID: 8967863978549909467, guid: b137d79ce4175c5459a8006d4c4b96ae, type: 3}
+      propertyPath: playerInput
+      value: 
+      objectReference: {fileID: 1123652762}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b137d79ce4175c5459a8006d4c4b96ae, type: 3}
+--- !u!114 &806809636 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8967863978549909467, guid: b137d79ce4175c5459a8006d4c4b96ae, type: 3}
+  m_PrefabInstance: {fileID: 806809635}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2fd88a51b7b9d244964d91867e520ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::pauseManager
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -5722,3 +5840,4 @@ SceneRoots:
   - {fileID: 1889578421}
   - {fileID: 674746443}
   - {fileID: 194368963}
+  - {fileID: 806809635}
